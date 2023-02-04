@@ -1,24 +1,37 @@
-import React from "react";
-import { useUserMedia } from "./useUSerMedia";
+import React, { Component } from 'react'
+import Webcam from "react-webcam";
+import  './Camera.css'
 
-export default function Camara() {
-  const { stream, error } = useUserMedia({ audio: true, video: true });
-    
-  return (
-    <div>
-      <h1>Hello GetUserMedia</h1>
-      {error ? (
-        <p>error</p>
-      ) : (
-        <video
-          autoPlay
-          ref={video => {
-            if (video) {
-              video.srcObject = stream;
-            }
-          }}
-        />
-      )}
-    </div>
-  );
+export default class Camara extends Component {
+    setRef=webcam=>{
+        this.webcam=webcam;
+    }
+
+        state={
+            imagen:null
+        }
+
+         foto=()=>{
+             var captura=this.webcam.getScreenshot();
+             console.log(captura)
+             this.setState({
+                 imagen:captura  
+             })
+         };
+
+    render() {
+
+        return (
+            <div className='App'>
+                <Webcam audio={false} height={350} ref={this.setRef} screenshotFormat="image/jpeg" width={350}/>
+                 <br/> 
+                <button onClick={this.foto}>Hacer captura</button>
+                <hr/>
+                <img src={this.state.imagen} alt=""/>  
+
+                <br/>
+                <a href={this.state.imagen} download="captura">Descargar captura</a> 
+            </div>
+        )
+    }
 }

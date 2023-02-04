@@ -1,6 +1,6 @@
 import React from 'react';
 import Clasificar from './components/Clasificar';
-import Camara from './components/camara';
+import Camara from './components/Camara';
 
 
 function App() {
