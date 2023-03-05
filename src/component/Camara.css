@@ -1,0 +1,14 @@
+.container-seb {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.ul-style {
+  margin-top: 35px;
+  list-style: none;
+}
+
+.close {
+  display: none;
+}
