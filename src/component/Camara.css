@@ -5,11 +5,22 @@
 }
 .captura{
   position: relative;
+  margin-top: 50px;
   left: 40px;
 }
 .ul-style {
   margin-top: 35px;
   list-style: none;
+}
+
+.h3-espera-1 {
+  position: absolute;
+  padding-top: 188px;
+  padding-left: 20px;
+}
+
+.h3-espera-2 {
+  margin-top: 187px;
 }
 
 .close {

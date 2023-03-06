@@ -7,7 +7,8 @@ export default function Camara() {
 
     async function loadModel() {
         try {
-            const modelo = await tf.loadLayersModel("http://localhost:5500/model.json");
+            // const modelo = await tf.loadLayersModel("http://localhost:5500/model.json")
+            const modelo = await tf.loadLayersModel("https://tesis-backend-one.vercel.app/model.json");
             setModelo(modelo);
             console.log("set loaded Model");
         } catch (err) {
@@ -47,7 +48,6 @@ export default function Camara() {
                 .then(function (stream) {
                     currentStream = stream;
                     video.srcObject = currentStream;
-                    console.log(video);
                     procesarCamara(video.video, ctx);
                 })
                 .catch(function (err) {
@@ -62,7 +62,6 @@ export default function Camara() {
     }, []);
 
     function procesarCamara(video_param, ctx) {
-        console.log(ctx);
         ctx.drawImage(video_param, 0, 0, 544, 544, 0, 0, 224, 224);
     }
 
@@ -98,13 +97,13 @@ export default function Camara() {
             console.log(resultado)
 
             var respuesta;
-            if (resultado[0] >= .9) {
+            if (resultado[0] >= .8) {
                 respuesta = "VC";
-            } else if (resultado[1] >= .9) {
+            } else if (resultado[1] >= .8) {
                 respuesta = "AP";
-            } else if (resultado[2] >= .9) {
+            } else if (resultado[2] >= .8) {
                 respuesta = "AA";
-            } else if (resultado[3] >= .9) {
+            } else if (resultado[3] >= .8) {
                 respuesta = "LR";
             } else {
                 respuesta = "Nada";
@@ -205,7 +204,8 @@ export default function Camara() {
                 />
             </div>
             <div>
-                <h3 className='display-10'>Captura de la camara</h3>
+                <h3 className={resultadon ? "close" : "display-10 h3-espera-1"}>Pulsar boton para predecir</h3>
+                <h3 className={resultadon ? 'display-10' : "close"}>Captura de la camara</h3>
                 <div className='captura'>
                     <canvas className="close" ref={canvasRef} width="200" height="200"></canvas>
                     <canvas ref={otrocanvasRef} width="300" height="300"></canvas>
@@ -213,6 +213,7 @@ export default function Camara() {
                    
             </div>
             <div>
+                <h3 className={resultadon ? "close" : "display-10 h3-espera-2"}>Esperando captura</h3>
             {resultadon && <><h3 className={resultadon ? 'display-10' : "close"}>Resultados de la prediccion: {resultadon[4]}</h3>
                     <ul className='ul-style'>
                         <li>VC = {resultadon[0]}</li>
