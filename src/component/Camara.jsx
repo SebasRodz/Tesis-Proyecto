@@ -63,7 +63,7 @@ export default function Camara() {
 
     function procesarCamara(video_param, ctx) {
         console.log(ctx);
-        ctx.drawImage(video_param, 0, 0, 224, 224, 0, 0, 224, 224);
+        ctx.drawImage(video_param, 0, 0, 544, 544, 0, 0, 224, 224);
     }
 
     function predecir(video, canvas_param, otrocanvas_param) {
@@ -200,14 +200,17 @@ export default function Camara() {
                     ref={webcamRef}
                     mirrored
                     style={{
-                        width: 224, height: 224
+                        width: 324, height: 324
                     }}
                 />
             </div>
             <div>
                 <h3 className='display-10'>Captura de la camara</h3>
-                <canvas className="close" ref={canvasRef} width="224" height="224"></canvas>
-                <canvas ref={otrocanvasRef} width="224" height="224"></canvas>
+                <div className='captura'>
+                    <canvas className="close" ref={canvasRef} width="200" height="200"></canvas>
+                    <canvas ref={otrocanvasRef} width="300" height="300"></canvas>
+                </div>
+                   
             </div>
             <div>
             {resultadon && <><h3 className={resultadon ? 'display-10' : "close"}>Resultados de la prediccion: {resultadon[4]}</h3>

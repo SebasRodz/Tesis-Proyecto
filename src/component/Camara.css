@@ -3,7 +3,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-
+.captura{
+  position: relative;
+  left: 40px;
+}
 .ul-style {
   margin-top: 35px;
   list-style: none;
